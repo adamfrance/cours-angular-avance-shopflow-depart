@@ -1,0 +1,25 @@
+<h1>Commande</h1>
+<form class="formulaire" (ngSubmit)="valider()">
+  <div class="groupe">
+    <label for="nom">Nom complet</label>
+    <input id="nom" class="champ" name="nom" [(ngModel)]="client.nom" />
+  </div>
+  <div class="groupe">
+    <label for="email">E-mail</label>
+    <input id="email" class="champ" name="email" [(ngModel)]="client.email" />
+  </div>
+  <div class="groupe">
+    <label for="adresse">Adresse</label>
+    <input id="adresse" class="champ" name="adresse" [(ngModel)]="client.adresse" />
+  </div>
+  <div class="groupe">
+    <label for="codePostal">Code postal</label>
+    <input id="codePostal" class="champ" name="codePostal" [(ngModel)]="client.codePostal" />
+  </div>
+  <div class="groupe">
+    <label for="ville">Ville</label>
+    <input id="ville" class="champ" name="ville" [(ngModel)]="client.ville" />
+  </div>
+  <p class="total">Montant à payer : {{ total$ | async | currency: 'EUR' }}</p>
+  <button class="bouton" type="submit">Valider la commande</button>
+</form>

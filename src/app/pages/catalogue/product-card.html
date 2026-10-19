@@ -1,0 +1,18 @@
+@let p = product();
+<article class="carte">
+  <a [routerLink]="['/catalogue', p.id]">
+    <img class="carte-image" [src]="p.thumbnail" [alt]="p.title" width="300" height="300" />
+  </a>
+  <div class="carte-corps">
+    <p class="carte-categorie">{{ p.category }}</p>
+    <h2 class="carte-titre"><a [routerLink]="['/catalogue', p.id]">{{ p.title }}</a></h2>
+    <p class="carte-note">★ {{ p.rating | number: '1.1-1' }}</p>
+    <p class="carte-prix">
+      {{ prixFinal() | currency: 'EUR' }}
+      @if (p.discountPercentage > 0) {
+        <s class="prix-barre">{{ p.price | currency: 'EUR' }}</s>
+      }
+    </p>
+    <button class="bouton" type="button" (click)="ajouter()">Ajouter au panier</button>
+  </div>
+</article>

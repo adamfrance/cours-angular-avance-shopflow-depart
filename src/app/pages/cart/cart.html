@@ -1,0 +1,36 @@
+<h1>Mon panier</h1>
+@if (lignes$ | async; as lignes) {
+  @if (lignes.length === 0) {
+    <p class="info">Votre panier est vide. <a routerLink="/catalogue">Voir le catalogue</a></p>
+  } @else {
+    <div class="table">
+      <table class="tableau">
+        <thead>
+          <tr><th>Produit</th><th>Prix</th><th>Quantité</th><th>Sous-total</th><th></th></tr>
+        </thead>
+        <tbody>
+          @for (l of lignes; track l.productId) {
+            <tr>
+              <td class="ligne-produit"><img [src]="l.thumbnail" [alt]="l.title" width="56" height="56" /> {{ l.title }}</td>
+              <td>{{ l.price | currency: 'EUR' }}</td>
+              <td>
+                <span class="quantite">
+                  <button class="bouton-icone" type="button" (click)="changer(l, -1)" aria-label="Retirer un article">−</button>
+                  {{ l.quantity }}
+                  <button class="bouton-icone" type="button" (click)="changer(l, 1)" aria-label="Ajouter un article">+</button>
+                </span>
+              </td>
+              <td>{{ l.price * l.quantity | currency: 'EUR' }}</td>
+              <td><button class="bouton bouton-secondaire" type="button" (click)="retirer(l)">Retirer</button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="total">Total : {{ total$ | async | currency: 'EUR' }}</p>
+    <div class="barre-outils">
+      <button class="bouton bouton-secondaire" type="button" (click)="vider()">Vider le panier</button>
+      <a class="bouton" routerLink="/commande">Commander</a>
+    </div>
+  }
+}

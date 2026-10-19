@@ -1,0 +1,17 @@
+<header class="entete">
+  <a class="logo" routerLink="/">ShopFlow</a>
+  <nav class="nav">
+    <a routerLink="/catalogue" routerLinkActive="actif">Catalogue</a>
+    <a routerLink="/panier" routerLinkActive="actif">Panier ({{ nbArticles$ | async }})</a>
+    <a routerLink="/mes-commandes" routerLinkActive="actif">Mes commandes</a>
+    <a routerLink="/admin" routerLinkActive="actif">Administration</a>
+  </nav>
+  <div class="entete-actions">
+    @if (utilisateur$ | async; as u) {
+      <span class="info">Bonjour {{ u.firstName }}</span>
+      <button class="bouton bouton-secondaire" type="button" (click)="deconnecter()">Déconnexion</button>
+    } @else {
+      <a class="bouton" routerLink="/connexion">Connexion</a>
+    }
+  </div>
+</header>

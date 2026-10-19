@@ -1,0 +1,28 @@
+<a class="retour" routerLink="/catalogue">← Retour au catalogue</a>
+@if (produit$ | async; as produit) {
+  <article class="detail">
+    <img class="detail-image" [src]="produit.thumbnail" [alt]="produit.title" width="300" height="300" />
+    <div>
+      <p class="carte-categorie">{{ produit.category }}</p>
+      <h1>{{ produit.title }}</h1>
+      <p class="carte-note">★ {{ produit.rating | number: '1.1-1' }}</p>
+      <p class="detail-prix">{{ produit.price | currency: 'EUR' }}</p>
+      <p>{{ produit.description }}</p>
+      <p class="info">Stock : {{ produit.stock }}</p>
+      <button class="bouton" type="button" (click)="ajouter(produit)">Ajouter au panier</button>
+    </div>
+  </article>
+  <section class="avis">
+    <h2>Avis clients</h2>
+    <ul class="avis-liste">
+      @for (a of produit.reviews; track $index) {
+        <li class="avis-item">
+          <p><strong>{{ a.reviewerName }}</strong> : {{ a.rating }}/5, le {{ a.date | date: 'longDate' }}</p>
+          <p>{{ a.comment }}</p>
+        </li>
+      }
+    </ul>
+  </section>
+} @else {
+  <p class="info">Chargement du produit…</p>
+}

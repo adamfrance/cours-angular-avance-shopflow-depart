@@ -1,0 +1,139 @@
+/* ShopFlow : feuille de styles globale de la formation.
+   À copier telle quelle dans src/styles.css (on ne la retape pas). */
+
+:root {
+  --fond: #f6f7f9;
+  --surface: #ffffff;
+  --texte: #1d2433;
+  --texte-doux: #5b6577;
+  --bordure: #dfe3ea;
+  --accent: #0b6e4f;
+  --accent-texte: #ffffff;
+  --rouge: #b42318;
+  --rouge-fond: #fdecea;
+  --orange: #9a5b00;
+  --orange-fond: #fff4e0;
+  --vert: #0b6e4f;
+  --vert-fond: #e6f4ee;
+  --bleu: #1d4ed8;
+  --bleu-fond: #e8eefc;
+  --rayon: 10px;
+  --ombre: 0 1px 3px rgba(16, 24, 40, 0.08);
+  color-scheme: light;
+}
+
+/* Thème sombre, activé au jour 2 par le bouton jour/nuit (attribut data-theme sur <html>) */
+[data-theme='sombre'] {
+  --fond: #12161f;
+  --surface: #1b212d;
+  --texte: #e7ebf2;
+  --texte-doux: #a3adbf;
+  --bordure: #2c3444;
+  --accent: #3ccf91;
+  --accent-texte: #0b1a13;
+  --rouge: #ff8a80;
+  --rouge-fond: #3a1f1f;
+  --orange: #ffc266;
+  --orange-fond: #3a2d17;
+  --vert: #6ee7b7;
+  --vert-fond: #163327;
+  --bleu: #93b4ff;
+  --bleu-fond: #1c2742;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--fond); color: var(--texte); line-height: 1.5; }
+a { color: inherit; }
+h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+.conteneur { max-width: 1120px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+/* En-tête */
+.entete { display: flex; align-items: center; gap: 2rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--bordure); position: sticky; top: 0; z-index: 10; }
+.logo { font-weight: 800; font-size: 1.25rem; text-decoration: none; color: var(--accent); }
+.nav { display: flex; gap: 0.5rem; flex: 1; }
+.nav a { text-decoration: none; padding: 0.35rem 0.8rem; border-radius: 999px; color: var(--texte-doux); }
+.nav a.actif, .nav a:hover { background: var(--vert-fond); color: var(--accent); }
+.entete-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+/* Textes et messages */
+.sous-titre, .info { color: var(--texte-doux); }
+.alerte { background: var(--rouge-fond); color: var(--rouge); padding: 0.75rem 1rem; border-radius: var(--rayon); }
+.succes { background: var(--vert-fond); color: var(--vert); padding: 0.75rem 1rem; border-radius: var(--rayon); }
+
+/* Champs et boutons */
+.champ { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--surface); color: var(--texte); font: inherit; }
+.champ:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.champ.invalide { border-color: var(--rouge); }
+.recherche { max-width: 420px; margin: 1rem 0 1.5rem; }
+.bouton { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1rem; border: 0; border-radius: var(--rayon); background: var(--accent); color: var(--accent-texte); font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
+.bouton:disabled { opacity: 0.5; cursor: not-allowed; }
+.bouton-secondaire { background: var(--surface); color: var(--texte); border: 1px solid var(--bordure); }
+.bouton-icone { background: transparent; border: 1px solid var(--bordure); border-radius: 999px; width: 2.25rem; height: 2.25rem; cursor: pointer; font-size: 1.1rem; color: var(--texte); }
+
+/* Grille de cartes produits */
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.carte-lien { text-decoration: none; color: inherit; display: block; }
+.carte { background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre); height: 100%; display: flex; flex-direction: column; }
+.carte-lien:hover .carte { border-color: var(--accent); }
+.carte-image { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: var(--fond); }
+.carte-corps { padding: 0.75rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.carte-categorie { margin: 0; font-size: 0.8rem; color: var(--texte-doux); }
+.carte-titre { margin: 0; font-size: 1rem; }
+.carte-note { margin: 0; font-size: 0.9rem; color: var(--orange); }
+.carte-prix { margin: 0; font-weight: 700; font-size: 1.1rem; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+.prix-barre { color: var(--texte-doux); font-weight: 400; font-size: 0.9rem; }
+
+/* Badges */
+.badge { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; width: fit-content; }
+.badge-vert { background: var(--vert-fond); color: var(--vert); }
+.badge-orange { background: var(--orange-fond); color: var(--orange); }
+.badge-rouge { background: var(--rouge-fond); color: var(--rouge); }
+.badge-bleu { background: var(--bleu-fond); color: var(--bleu); }
+
+/* Page détail d'un produit */
+.retour { display: inline-block; margin-bottom: 1rem; color: var(--texte-doux); }
+.detail { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 2rem; background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 1.5rem; }
+.detail-image { width: 100%; height: auto; }
+.detail-prix { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0; }
+.avis { margin-top: 2rem; }
+.avis-liste { list-style: none; padding: 0; display: grid; gap: 0.75rem; }
+.avis-item { background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 0.75rem 1rem; }
+.avis-item p { margin: 0.2rem 0; }
+
+/* Statistiques */
+.barre-outils { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; }
+.tuiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+.tuile { background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 1rem; display: flex; flex-direction: column; }
+.tuile-valeur { font-size: 1.6rem; font-weight: 800; }
+.tuile-libelle { color: var(--texte-doux); }
+
+/* Formulaires (jour 3) */
+.formulaire { display: grid; gap: 1rem; max-width: 640px; background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 1.5rem; }
+.groupe { display: grid; gap: 0.3rem; }
+.groupe label { font-weight: 600; }
+.erreur-champ { color: var(--rouge); font-size: 0.85rem; margin: 0; }
+
+@media (max-width: 640px) {
+  .detail { grid-template-columns: 1fr; }
+  .entete { gap: 1rem; padding: 0.75rem 1rem; }
+}
+
+/* Compléments ShopFlow */
+.barre-outils .champ { width: auto; margin: 0; }
+.barre-outils .recherche { flex: 1; min-width: 220px; }
+.carte .bouton { margin-top: 0.4rem; justify-content: center; }
+.carte-titre a { text-decoration: none; }
+.table { overflow-x: auto; }
+.tableau { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 0.92rem; }
+.tableau th, .tableau td { border-bottom: 1px solid var(--bordure); padding: 0.5rem 0.6rem; text-align: left; vertical-align: middle; }
+.tableau th { background: var(--fond); }
+.ligne-produit img { width: 56px; height: 56px; object-fit: contain; vertical-align: middle; margin-right: 0.5rem; }
+.quantite { display: inline-flex; align-items: center; gap: 0.5rem; }
+.total { font-size: 1.2rem; font-weight: 700; }
+.panneau { background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 0.8rem 1.2rem; margin: 1rem 0; }
+.panneau h2 { margin: 0.2rem 0 0.4rem; font-size: 1.1rem; }
+.liste-simple { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.3rem; }
+.sous-nav { display: flex; gap: 0.5rem; margin: 0.5rem 0 1.2rem; }
+.sous-nav a { text-decoration: none; padding: 0.35rem 0.8rem; border-radius: 999px; color: var(--texte-doux); border: 1px solid var(--bordure); }
+.sous-nav a.actif { background: var(--vert-fond); color: var(--accent); border-color: var(--accent); }

@@ -1,0 +1,23 @@
+@if (page$ | async; as page) {
+  <div class="table">
+    <table class="tableau">
+      <thead>
+        <tr><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Stock</th><th>Valeur</th><th>État</th></tr>
+      </thead>
+      <tbody>
+        @for (p of page.products; track $index) {
+          <tr>
+            <td>{{ p.title }}</td>
+            <td>{{ p.category }}</td>
+            <td>{{ p.price | currency: 'EUR' }}</td>
+            <td>{{ p.stock }}</td>
+            <td>{{ valeur(p) | currency: 'EUR' }}</td>
+            <td>{{ etatStock(p) }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+} @else {
+  <p class="info">Chargement du stock…</p>
+}
