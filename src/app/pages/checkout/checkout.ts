@@ -2,9 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth-service';
-import { CartService } from '../../services/cart-service';
-import { OrderService } from '../../services/order-service';
+import { AuthService, CartService, OrderService } from '@shopflow/data-access';
 
 @Component({
   selector: 'app-checkout',

@@ -1,10 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
-import { Order } from '../../models/order';
-import { User } from '../../models/user';
-import { AuthService } from '../../services/auth-service';
-import { OrderService } from '../../services/order-service';
+import { Order, User } from '@shopflow/models';
+import { AuthService, OrderService } from '@shopflow/data-access';
 
 interface EtatCommandes {
   chargement: boolean;

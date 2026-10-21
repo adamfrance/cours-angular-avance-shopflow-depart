@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartLine } from '../models/cart';
-import { Order, OrderPage } from '../models/order';
+import { CartLine, Order, OrderPage } from '@shopflow/models';
 import { API_URL } from './api';
 
 @Service()

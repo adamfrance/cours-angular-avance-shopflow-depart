@@ -1,7 +1,6 @@
 import { Service } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { CartLine } from '../models/cart';
-import { Product, prixRemise } from '../models/product';
+import { CartLine, Product, prixRemise } from '@shopflow/models';
 
 const CLE_STOCKAGE = 'shopflow-panier';
 

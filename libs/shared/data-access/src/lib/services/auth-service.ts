@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LoginResponse, User } from '../models/user';
+import { LoginResponse, User } from '@shopflow/models';
 import { API_URL } from './api';
 
 const CLE_SESSION = 'shopflow-session';

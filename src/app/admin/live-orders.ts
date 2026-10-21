@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
-import { Order } from '../models/order';
-import { OrderService } from '../services/order-service';
+import { Order } from '@shopflow/models';
+import { OrderService } from '@shopflow/data-access';
 
 @Component({
   selector: 'app-live-orders',

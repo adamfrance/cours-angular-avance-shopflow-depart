@@ -6,7 +6,7 @@
   <div class="carte-corps">
     <p class="carte-categorie">{{ p.category }}</p>
     <h2 class="carte-titre"><a [routerLink]="['/catalogue', p.id]">{{ p.title }}</a></h2>
-    <p class="carte-note">★ {{ p.rating | number: '1.1-1' }}</p>
+    <sf-note [valeur]="p.rating" />
     <p class="carte-prix">
       {{ prixFinal() | currency: 'EUR' }}
       @if (p.discountPercentage > 0) {

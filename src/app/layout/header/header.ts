@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthService } from '../../services/auth-service';
-import { CartService } from '../../services/cart-service';
+import { AuthService, CartService } from '@shopflow/data-access';
 
 @Component({
   selector: 'app-header',

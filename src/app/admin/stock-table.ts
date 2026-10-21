@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { Product } from '../models/product';
-import { ProductService } from '../services/product-service';
+import { Product } from '@shopflow/models';
+import { ProductService } from '@shopflow/data-access';
 
 @Component({
   selector: 'app-stock-table',

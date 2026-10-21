@@ -3,7 +3,7 @@ import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '@shopflow/data-access';
 
 @Component({
   selector: 'app-login',

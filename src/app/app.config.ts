@@ -4,7 +4,7 @@ import localeFr from '@angular/common/locales/fr';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { authInterceptor } from './services/auth-interceptor';
+import { authInterceptor } from '@shopflow/data-access';
 
 registerLocaleData(localeFr);
 

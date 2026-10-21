@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { AsyncPipe, CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Product } from '../../models/product';
-import { CartService } from '../../services/cart-service';
-import { ProductService } from '../../services/product-service';
+import { Product } from '@shopflow/models';
+import { CartService, ProductService } from '@shopflow/data-access';
+import { Note } from '@shopflow/ui';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [AsyncPipe, CurrencyPipe, DatePipe, DecimalPipe, RouterLink],
+  imports: [AsyncPipe, CurrencyPipe, DatePipe, Note, RouterLink],
   templateUrl: './product-detail.html',
 })
 export class ProductDetail {

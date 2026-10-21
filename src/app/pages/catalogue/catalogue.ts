@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { Product } from '../../models/product';
-import { ProductService } from '../../services/product-service';
-import { ProductCard } from './product-card';
+import { Product } from '@shopflow/models';
+import { CartService, ProductService } from '@shopflow/data-access';
+import { ProductCard } from '@shopflow/ui';
 
 type Tri = 'nom' | 'prix-croissant' | 'prix-decroissant';
 
@@ -13,6 +13,7 @@ type Tri = 'nom' | 'prix-croissant' | 'prix-decroissant';
 })
 export class Catalogue {
   private readonly productService = inject(ProductService);
+  protected readonly panier = inject(CartService);
 
   protected readonly page$ = this.productService.getAll();
   protected readonly categories$ = this.productService.getCategories();

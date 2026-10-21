@@ -17,7 +17,7 @@
   </div>
   <div class="grille">
     @for (p of produitsAffiches(page.products); track $index) {
-      <app-product-card [product]="p" />
+      <sf-product-card [product]="p" (ajout)="panier.add($event)" />
     } @empty {
       <p class="info">Aucun produit ne correspond à votre recherche.</p>
     }

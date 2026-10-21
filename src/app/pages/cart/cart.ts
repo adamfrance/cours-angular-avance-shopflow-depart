@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { CartLine } from '../../models/cart';
-import { CartService } from '../../services/cart-service';
+import { CartLine } from '@shopflow/models';
+import { CartService } from '@shopflow/data-access';
 
 @Component({
   selector: 'app-cart',

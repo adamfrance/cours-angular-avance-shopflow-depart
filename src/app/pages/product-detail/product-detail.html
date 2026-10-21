@@ -5,7 +5,7 @@
     <div>
       <p class="carte-categorie">{{ produit.category }}</p>
       <h1>{{ produit.title }}</h1>
-      <p class="carte-note">★ {{ produit.rating | number: '1.1-1' }}</p>
+      <sf-note [valeur]="produit.rating" />
       <p class="detail-prix">{{ produit.price | currency: 'EUR' }}</p>
       <p>{{ produit.description }}</p>
       <p class="info">Stock : {{ produit.stock }}</p>
