@@ -66,6 +66,16 @@
       "options": {
         "runner": "karma"
       }
+    },
+    "doc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "compodoc -p tsconfig.doc.json -d dist/doc"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/doc"
+      ],
+      "cache": true
     }
   },
   "tags": [

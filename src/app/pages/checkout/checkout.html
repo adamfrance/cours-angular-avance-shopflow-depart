@@ -20,6 +20,6 @@
     <label for="ville">Ville</label>
     <input id="ville" class="champ" name="ville" [(ngModel)]="client.ville" />
   </div>
-  <p class="total">Montant à payer : {{ total$ | async | currency: 'EUR' }}</p>
+  <p class="total">Montant à payer : {{ total() | currency: 'EUR' }}</p>
   <button class="bouton" type="submit">Valider la commande</button>
 </form>

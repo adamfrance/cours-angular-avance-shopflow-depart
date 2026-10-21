@@ -1,14 +1,14 @@
 @let p = product();
 <article class="carte">
   <a [routerLink]="['/catalogue', p.id]">
-    <img class="carte-image" [src]="p.thumbnail" [alt]="p.title" width="300" height="300" />
+    <img class="carte-image" [ngSrc]="p.thumbnail" [alt]="p.title" width="300" height="300" [priority]="prioriteInitiale" />
   </a>
   <div class="carte-corps">
     <p class="carte-categorie">{{ p.category }}</p>
     <h2 class="carte-titre"><a [routerLink]="['/catalogue', p.id]">{{ p.title }}</a></h2>
     <sf-note [valeur]="p.rating" />
     <p class="carte-prix">
-      {{ prixFinal() | currency: 'EUR' }}
+      {{ p | prixRemise | currency: 'EUR' }}
       @if (p.discountPercentage > 0) {
         <s class="prix-barre">{{ p.price | currency: 'EUR' }}</s>
       }

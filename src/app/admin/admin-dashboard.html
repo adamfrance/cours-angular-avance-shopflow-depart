@@ -8,4 +8,8 @@
 } @else {
   <p class="info">Chargement des indicateurs…</p>
 }
-<app-live-orders />
+@defer (on idle) {
+  <app-live-orders />
+} @placeholder {
+  <section class="panneau"><h2>Dernières commandes</h2><p class="info">Préparation…</p></section>
+}

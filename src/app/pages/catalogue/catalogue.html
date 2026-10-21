@@ -1,11 +1,11 @@
 <h1>Catalogue</h1>
-@if (page$ | async; as page) {
+@if (page(); as page) {
   <p class="sous-titre">{{ page.total }} produits</p>
   <div class="barre-outils">
     <input class="champ recherche" type="search" placeholder="Rechercher un produit…" (input)="onRecherche($event)" />
     <select class="champ" (change)="onCategorie($event)">
       <option value="">Toutes les catégories</option>
-      @for (c of categories$ | async; track c.slug) {
+      @for (c of categories(); track c.slug) {
         <option [value]="c.slug">{{ c.name }}</option>
       }
     </select>
@@ -16,8 +16,8 @@
     </select>
   </div>
   <div class="grille">
-    @for (p of produitsAffiches(page.products); track $index) {
-      <sf-product-card [product]="p" (ajout)="panier.add($event)" />
+    @for (p of produits(); track p.id) {
+      <sf-product-card [product]="p" [prioritaire]="$index < 4" (ajout)="panier.add($event)" />
     } @empty {
       <p class="info">Aucun produit ne correspond à votre recherche.</p>
     }

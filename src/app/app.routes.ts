@@ -1,31 +1,25 @@
 import { Routes } from '@angular/router';
 import { Catalogue } from './pages/catalogue/catalogue';
-import { ProductDetail } from './pages/product-detail/product-detail';
-import { Cart } from './pages/cart/cart';
-import { Checkout } from './pages/checkout/checkout';
-import { Confirmation } from './pages/checkout/confirmation';
-import { Login } from './pages/login/login';
-import { Orders } from './pages/orders/orders';
-import { AdminLayout } from './admin/admin-layout';
-import { AdminDashboard } from './admin/admin-dashboard';
-import { StockTable } from './admin/stock-table';
+import { authGuard } from './guards/auth-guard';
+import { productResolver } from './pages/product-detail/product-resolver';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'catalogue', pathMatch: 'full' },
   { path: 'catalogue', component: Catalogue },
-  { path: 'catalogue/:id', component: ProductDetail },
-  { path: 'panier', component: Cart },
-  { path: 'commande', component: Checkout },
-  { path: 'commande/confirmation', component: Confirmation },
-  { path: 'connexion', component: Login },
-  { path: 'mes-commandes', component: Orders },
   {
-    path: 'admin',
-    component: AdminLayout,
-    children: [
-      { path: '', component: AdminDashboard },
-      { path: 'stock', component: StockTable },
-    ],
+    path: 'catalogue/:id',
+    loadComponent: () => import('./pages/product-detail/product-detail').then((m) => m.ProductDetail),
+    resolve: { produit: productResolver },
   },
+  { path: 'panier', loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart) },
+  { path: 'commande', loadComponent: () => import('./pages/checkout/checkout').then((m) => m.Checkout) },
+  { path: 'commande/confirmation', loadComponent: () => import('./pages/checkout/confirmation').then((m) => m.Confirmation) },
+  { path: 'connexion', loadComponent: () => import('./pages/login/login').then((m) => m.Login) },
+  {
+    path: 'mes-commandes',
+    canActivate: [authGuard],
+    loadComponent: () => import('./pages/orders/orders').then((m) => m.Orders),
+  },
+  { path: 'admin', loadChildren: () => import('./admin/admin.routes').then((m) => m.adminRoutes) },
   { path: '**', redirectTo: 'catalogue' },
 ];

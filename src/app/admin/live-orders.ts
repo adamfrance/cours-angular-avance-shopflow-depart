@@ -1,7 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
-import { BehaviorSubject } from 'rxjs';
-import { Order } from '@shopflow/models';
+import { BehaviorSubject, EMPTY, map, switchMap, timer } from 'rxjs';
 import { OrderService } from '@shopflow/data-access';
 
 @Component({
@@ -9,23 +8,18 @@ import { OrderService } from '@shopflow/data-access';
   imports: [AsyncPipe, CurrencyPipe, DatePipe],
   templateUrl: './live-orders.html',
 })
-export class LiveOrders implements OnInit {
+export class LiveOrders {
   private readonly orderService = inject(OrderService);
-  protected readonly commandes$ = new BehaviorSubject<Order[]>([]);
-  protected readonly miseAJour$ = new BehaviorSubject<Date | null>(null);
-  private position = 0;
+  protected readonly actif$ = new BehaviorSubject(true);
 
-  ngOnInit(): void {
-    this.charger();
-    setInterval(() => this.charger(), 5000);
-  }
+  protected readonly flux$ = this.actif$.pipe(
+    switchMap((actif) => (actif ? timer(0, 5000) : EMPTY)),
+    map((n) => ((n + 1) * 5) % 200),
+    switchMap((position) => this.orderService.latest(position)),
+    map((page) => ({ commandes: page.carts, date: new Date() })),
+  );
 
-  private charger(): void {
-    // Simulation : l'API de démonstration ne reçoit pas de nouvelles commandes, on fait défiler ses paniers
-    this.position = (this.position + 5) % 200;
-    this.orderService.latest(this.position).subscribe((page) => {
-      this.commandes$.next(page.carts);
-      this.miseAJour$.next(new Date());
-    });
+  protected basculer(): void {
+    this.actif$.next(!this.actif$.value);
   }
 }

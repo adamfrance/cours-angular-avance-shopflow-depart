@@ -1,24 +1,19 @@
-import { Component, inject } from '@angular/core';
-import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Component, inject, input } from '@angular/core';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Product } from '@shopflow/models';
-import { CartService, ProductService } from '@shopflow/data-access';
+import { CartService } from '@shopflow/data-access';
 import { Note } from '@shopflow/ui';
+import { ProductReviews } from './product-reviews';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [AsyncPipe, CurrencyPipe, DatePipe, Note, RouterLink],
+  imports: [CurrencyPipe, NgOptimizedImage, Note, ProductReviews, RouterLink],
   templateUrl: './product-detail.html',
 })
 export class ProductDetail {
-  private readonly route = inject(ActivatedRoute);
-  private readonly productService = inject(ProductService);
   private readonly cart = inject(CartService);
-
-  protected readonly produit$ = this.route.paramMap.pipe(
-    switchMap((params) => this.productService.getById(Number(params.get('id')))),
-  );
+  readonly produit = input.required<Product>();
 
   protected ajouter(p: Product): void {
     this.cart.add(p);

@@ -1,21 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { Product } from '@shopflow/models';
 import { ProductService } from '@shopflow/data-access';
+import { EtatStockPipe } from './etat-stock-pipe';
 
 @Component({
   selector: 'app-stock-table',
-  imports: [AsyncPipe, CurrencyPipe],
+  imports: [AsyncPipe, CurrencyPipe, EtatStockPipe],
   templateUrl: './stock-table.html',
 })
 export class StockTable {
   protected readonly page$ = inject(ProductService).getAll();
-
-  protected etatStock(p: Product): string {
-    return p.stock === 0 ? 'Rupture' : p.stock < 10 ? 'Stock faible' : 'En stock';
-  }
-
-  protected valeur(p: Product): number {
-    return p.price * p.stock;
-  }
 }
