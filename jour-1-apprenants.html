@@ -97,7 +97,7 @@ th { background: var(--accent-soft); }
 details.corrige { border:1px solid var(--rule); border-radius:8px; padding:.5rem 1rem; margin:1rem 0; }
 details.corrige > summary { cursor:pointer; font-weight:700; color:var(--accent); }
 .exo { border:1px solid var(--accent); border-radius:8px; padding:.4rem 1.1rem; margin:1rem 0; }
-</style><section id="plan"><h2>Plan de la journée</h2><div class="table"><table class="plan-jour"><thead><tr><th>Horaire</th><th>Partie</th></tr></thead><tbody><tr><td>9 h 00 – 10 h 00</td><td><a href="#p1">Introduction de la formation</a></td></tr><tr><td>10 h 00 – 10 h 45</td><td><a href="#p2">Visite de ShopFlow, l’application de départ</a></td></tr><tr><td>10 h 45 – 11 h 00</td><td>pause</td></tr><tr><td>11 h 00 – 12 h 30, 13 h 30 – 14 h 30</td><td><a href="#p3">Séquence 2 : diagnostiquer ShopFlow</a></td></tr><tr><td>12 h 30 – 13 h 30</td><td>déjeuner</td></tr><tr><td>14 h 30 – 15 h 15</td><td><a href="#p4">Séquence 3 : Nx dans ShopFlow (première partie)</a></td></tr><tr><td>15 h 15 – 15 h 30</td><td>pause</td></tr><tr><td>15 h 30 – 15 h 40</td><td><a href="#p5">TP final : remettre Cuisto en état</a></td></tr><tr><td>15 h 40 – 17 h 00</td><td><a href="#p6">TP Cuisto, jour 1</a></td></tr></tbody></table></div></section><div class="chapitre" id="p1"><p class="horaire">9 h 00 – 10 h 00</p><h1>Introduction de la formation</h1><div class="rule"><p class="box-titre">Au programme de l’introduction (1 h)</p><ul><li>5 min : présentation du formateur</li><li>10 min : tour de table</li><li>10 min : le programme et l’organisation des journées</li><li>15 min : test de niveau</li><li>5 min : vérification des postes</li><li>5 min : récupération des deux applications</li><li>10 min : lancement et test des deux applications</li></ul><p>Pas de code tant que les présentations et le programme ne sont pas faits : on fait connaissance, on explique où l’on va, puis seulement on prépare les postes et les applications.</p></div>
+</style><section id="plan"><h2>Plan de la journée</h2><div class="table"><table class="plan-jour"><thead><tr><th>Horaire</th><th>Partie</th></tr></thead><tbody><tr><td>9 h 00 – 10 h 00</td><td><a href="#p1">Introduction de la formation</a></td></tr><tr><td>10 h 00 – 10 h 45</td><td><a href="#p2">Visite de ShopFlow, l’application de départ</a></td></tr><tr><td>10 h 45 – 11 h 00</td><td>pause</td></tr><tr><td>11 h 00 – 12 h 30, 13 h 30 – 14 h 30</td><td><a href="#p3">Séquence 2 : diagnostiquer ShopFlow</a></td></tr><tr><td>12 h 30 – 13 h 30</td><td>déjeuner</td></tr><tr><td>14 h 30 – 15 h 15</td><td><a href="#p4">Séquence 3 : Nx dans ShopFlow (première partie)</a></td></tr><tr><td>15 h 15 – 15 h 30</td><td>pause</td></tr><tr><td>15 h 30 – 15 h 40</td><td><a href="#p5">TP final : remettre Cuisto en état</a></td></tr><tr><td>15 h 40 – 17 h 00</td><td><a href="#p6">TP Cuisto, jour 1</a></td></tr><tr><td>17 h 00</td><td><a href="#p8">Enregistrer son travail sur GitHub</a></td></tr></tbody></table></div></section><div class="chapitre" id="p1"><p class="horaire">9 h 00 – 10 h 00</p><h1>Introduction de la formation</h1><div class="rule"><p class="box-titre">Au programme de l’introduction (1 h)</p><ul><li>5 min : présentation du formateur</li><li>10 min : tour de table</li><li>10 min : le programme et l’organisation des journées</li><li>15 min : test de niveau</li><li>5 min : vérification des postes</li><li>5 min : récupération des deux applications</li><li>10 min : lancement et test des deux applications</li></ul><p>Pas de code tant que les présentations et le programme ne sont pas faits : on fait connaissance, on explique où l’on va, puis seulement on prépare les postes et les applications.</p></div>
 
 
 <section><h2>3. Le programme et l’organisation (10 min)</h2>
@@ -155,6 +155,17 @@ npm install
 npm start -- --port 4201</textarea></figure>
 <div class="tablewrap"><table><thead><tr><th>Application</th><th>Vérification</th><th>Attendu</th></tr></thead><tbody><tr><td>ShopFlow</td><td>Ouvrir http://localhost:4200</td><td>Le catalogue affiche « 194 produits »</td></tr><tr><td>ShopFlow</td><td>Se connecter avec <code>emilys</code> / <code>emilyspass</code></td><td>« Bonjour Emily » dans l’en-tête</td></tr><tr><td>Cuisto</td><td>Ouvrir http://localhost:4201</td><td>La liste affiche « 50 recette(s) »</td></tr><tr><td>Cuisto</td><td>Ouvrir une recette</td><td>La fiche s’affiche avec ses ingrédients</td></tr><tr><td>Les deux</td><td>F12, onglet Console</td><td>Aucune erreur en rouge</td></tr></tbody></table></div>
 <div class="constat"><p class="box-titre">Si une application ne démarre pas</p><p>Vérifier la version de Node (24.15 ou plus récent), relancer <code>npm install</code>, vérifier que le port n’est pas déjà utilisé. Ne pas commencer le cours tant que les deux applications ne tournent pas chez tout le monde : un apprenant bloqué ici le reste toute la journée.</p></div>
+</section><section><h2>Questions fréquentes</h2>
+<h3>Angular refuse de démarrer : « Node.js version … detected »</h3>
+<p>Angular 22 demande Node 24.15 ou plus récent (ou 22.22.3). Installer la version LTS depuis nodejs.org (installateur officiel), fermer et rouvrir le terminal, puis vérifier :</p><figure class="code"><figcaption><span>Terminal — n’importe quel dossier</span><button class="copy" data-i="1_31">Copier</button></figcaption><pre><code>node<span class="hl-w"> </span>-v
+</code></pre><textarea hidden id="c1_31">node -v</textarea></figure>
+<h3>« bus error », <code>npm install</code> très lent, ou Homebrew qui échoue</h3>
+<p>Ces erreurs viennent presque toujours d’un projet ou d’un outil installé sur un <strong>disque externe</strong> ou une clé USB. Copier le projet sur le disque interne (par exemple dans le Bureau), réinstaller ses dépendances, et préférer l’installateur officiel de Node à Homebrew :</p><figure class="code"><figcaption><span>Terminal — dans le dossier du projet (shopflow/ ou cuisto/)</span><button class="copy" data-i="1_32">Copier</button></figcaption><pre><code>rm<span class="hl-w"> </span>-rf<span class="hl-w"> </span>node_modules
+npm<span class="hl-w"> </span>install
+</code></pre><textarea hidden id="c1_32">rm -rf node_modules
+npm install</textarea></figure>
+<h3>Comment lancer les deux applications en même temps ?</h3>
+<p>Deux terminaux, deux ports : ShopFlow sur 4200 (<code>npm start</code> dans <code>shopflow/</code>), Cuisto sur 4201 (<code>npm start -- --port 4201</code> dans <code>cuisto/</code>).</p>
 </section><p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
 <div class="chapitre" id="p2"><p class="horaire">10 h 00 – 10 h 45</p><h1>Visite de ShopFlow, l’application de départ</h1><section><h2>Rappel : écrire un template aujourd’hui</h2>
 <p>Avant la visite, on montre la différence entre l’écriture que certains apprenants connaissent et celle de ShopFlow.</p>
@@ -1324,7 +1335,15 @@ Gravité : 1 = gêne, 2 = dégrade l’usage ou la performance, 3 = faille ou er
 </details>
 
 </section>
-<p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
+<section><h2>Questions fréquentes</h2>
+<h3>Comment voir ce que reçoit un moteur de recherche ?</h3>
+<figure class="code"><figcaption><span>Terminal 2 — n’importe quel dossier (ShopFlow lancé dans le terminal 1)</span><button class="copy" data-i="3_3z_33">Copier</button></figcaption><pre><code>curl<span class="hl-w"> </span>-s<span class="hl-w"> </span>http://localhost:4200/catalogue<span class="hl-w"> </span><span class="hl-p">|</span><span class="hl-w"> </span>grep<span class="hl-w"> </span>-c<span class="hl-w"> </span><span class="hl-s2">&quot;sf-product-card&quot;</span>
+</code></pre><textarea hidden id="c3_3z_33">curl -s http://localhost:4200/catalogue | grep -c &quot;sf-product-card&quot;</textarea></figure><p>Résultat : 0. Le serveur n’envoie qu’une page vide et le JavaScript ; les cartes sont fabriquées dans le navigateur. C’est le défaut que corrige le rendu côté serveur (jour 3), où la même commande trouve les cartes.</p>
+<h3>Comment mesurer une page qui demande d’être connecté ?</h3>
+<p>La commande <code>npx lighthouse</code> ouvre un navigateur vierge, sans session. Pour une page de l’administration : se connecter dans Chrome, ouvrir la page, F12 &gt; onglet <strong>Lighthouse</strong> &gt; <strong>Analyser le chargement de la page</strong>.</p>
+<h3>Peut-on calculer un score Lighthouse sans connexion internet ?</h3>
+<p>Oui : <code>outils/calculateur-lighthouse.html</code>, dans l’archive du cours, calcule le score de performance à partir des cinq mesures, avec les mêmes pondérations que Lighthouse.</p>
+</section><p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
 <div class="pause">12 h 30 – 13 h 30 : déjeuner</div>
 <div class="chapitre" id="p4"><p class="horaire">14 h 30 – 15 h 15</p><h1>Séquence 3 : Nx dans ShopFlow (première partie)</h1>
 <style>
@@ -1368,7 +1387,12 @@ details.corrige > summary { cursor:pointer; font-weight:700; color:var(--accent)
 
 
 
-<p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
+<section><h2>Questions fréquentes</h2>
+<h3>Après l’installation de Nx, l’application fonctionne-t-elle comme avant ?</h3>
+<p>Oui : le code ne change pas et <code>npm start</code> lance toujours l’application (le script devient <code>nx serve</code>). <code>angular.json</code> est remplacé par <code>project.json</code> et <code>nx.json</code> : les commandes <code>ng serve</code> et <code>ng build</code> deviennent <code>npx nx serve</code> et <code>npx nx build</code>.</p>
+<h3>Ligne de commande ou Nx Console ?</h3>
+<p>L’une <strong>ou</strong> l’autre, jamais les deux pour la même action : créer une bibliothèque en ligne de commande, puis la recréer dans Nx Console, donne deux bibliothèques. Nx Console ne fait que remplir la même commande dans un formulaire, et l’affiche avant de l’exécuter.</p>
+</section><p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
 <div class="pause">15 h 15 – 15 h 30 : pause</div>
 <div class="chapitre" id="p5"><p class="horaire">15 h 30 – 15 h 40</p><h1>TP final : remettre Cuisto en état</h1>
 <style>
@@ -1567,6 +1591,42 @@ git push --follow-tags</textarea></figure>
 <section class="etape"><h2>Pour aller plus loin (facultatif)</h2><p>À faire seulement si les étapes précédentes sont terminées. Chaque point donne des points bonus.</p><ul><li><strong>Rendre la carte indépendante</strong> : la carte ne doit plus injecter de service. Elle reçoit « est-elle en favori ? » par une entrée et signale « ouvrir » et « changer le favori » par des sorties ; ce sont les pages qui naviguent et gèrent les favoris.</li><li><strong>Charger à la demande</strong> : chaque page dans un fichier séparé (<code>loadComponent</code>) ; « Recettes similaires » dans un bloc <code>@defer (on viewport)</code> dont la requête ne part qu’à l’affichage ; images avec <code>ngSrc</code>.</li><li><strong>Alléger les templates</strong> : remplacer les méthodes appelées dans les templates par des pipes purs ; faire défiler le minuteur avec <code>ChangeDetectorRef</code>.</li><li><strong>Documenter</strong> : générer la documentation avec Compodoc.</li></ul></section>
 <p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
 
+<div class="chapitre" id="p8"><p class="horaire">17 h 00</p><h1>Enregistrer son travail sur GitHub</h1><p><strong>Objectif</strong> : enregistrer son travail du jour sur GitHub, dans une branche <code>fin-jour-1</code>, pour le retrouver demain ou le montrer.</p>
+<p><strong>Vérifier d’abord si le dossier est un dépôt Git</strong> :</p>
+<figure class="code"><figcaption><span>Terminal — dans shopflow/ (racine du projet, là où se trouve package.json)</span><button class="copy" data-i="8_34">Copier</button></figcaption><pre><code>git<span class="hl-w"> </span>status
+</code></pre><textarea hidden id="c8_34">git status</textarea></figure>
+<p><strong>Si <code>git status</code> fonctionne</strong> (dossier cloné depuis GitHub) :</p>
+<figure class="code"><figcaption><span>Terminal — dans shopflow/ (racine du projet, là où se trouve package.json)</span><button class="copy" data-i="8_35">Copier</button></figcaption><pre><code>git<span class="hl-w"> </span>switch<span class="hl-w"> </span>-c<span class="hl-w"> </span>fin-jour-1
+git<span class="hl-w"> </span>add<span class="hl-w"> </span>-A
+git<span class="hl-w"> </span>commit<span class="hl-w"> </span>-m<span class="hl-w"> </span><span class="hl-s2">&quot;Fin du jour 1&quot;</span>
+git<span class="hl-w"> </span>push<span class="hl-w"> </span>-u<span class="hl-w"> </span>origin<span class="hl-w"> </span>fin-jour-1
+</code></pre><textarea hidden id="c8_35">git switch -c fin-jour-1
+git add -A
+git commit -m &quot;Fin du jour 1&quot;
+git push -u origin fin-jour-1</textarea></figure>
+<p><strong>Si le message est « fatal: not a git repository »</strong> (dossier venu d’un zip de point de reprise, sans historique) :</p>
+<figure class="code"><figcaption><span>Terminal — dans shopflow/ (racine du projet, là où se trouve package.json)</span><button class="copy" data-i="8_36">Copier</button></figcaption><pre><code>git<span class="hl-w"> </span>init<span class="hl-w"> </span>-b<span class="hl-w"> </span>fin-jour-1
+git<span class="hl-w"> </span>add<span class="hl-w"> </span>-A
+git<span class="hl-w"> </span>commit<span class="hl-w"> </span>-m<span class="hl-w"> </span><span class="hl-s2">&quot;Fin du jour 1&quot;</span>
+git<span class="hl-w"> </span>remote<span class="hl-w"> </span>add<span class="hl-w"> </span>origin<span class="hl-w"> </span>https://github.com/&lt;votre-compte&gt;/&lt;votre-depot&gt;.git
+git<span class="hl-w"> </span>push<span class="hl-w"> </span>-u<span class="hl-w"> </span>origin<span class="hl-w"> </span>fin-jour-1
+</code></pre><textarea hidden id="c8_36">git init -b fin-jour-1
+git add -A
+git commit -m &quot;Fin du jour 1&quot;
+git remote add origin https://github.com/&lt;votre-compte&gt;/&lt;votre-depot&gt;.git
+git push -u origin fin-jour-1</textarea></figure>
+<p>Le fichier <code>.gitignore</code> du projet exclut <code>node_modules</code>, <code>dist</code> et <code>.nx</code> : seuls les fichiers du code partent sur GitHub.</p>
+<p><strong>Vérifier</strong> : la commande ci-dessous interroge GitHub directement ; elle doit afficher <code>refs/heads/fin-jour-1</code>. La page des branches de GitHub peut mettre quelques minutes à l’afficher.</p>
+<figure class="code"><figcaption><span>Terminal — dans shopflow/ (racine du projet, là où se trouve package.json)</span><button class="copy" data-i="8_37">Copier</button></figcaption><pre><code>git<span class="hl-w"> </span>ls-remote<span class="hl-w"> </span>--heads<span class="hl-w"> </span>origin
+</code></pre><textarea hidden id="c8_37">git ls-remote --heads origin</textarea></figure>
+<p><strong>Renommer une branche déjà envoyée</strong> :</p>
+<figure class="code"><figcaption><span>Terminal — dans shopflow/ (racine du projet, là où se trouve package.json)</span><button class="copy" data-i="8_38">Copier</button></figcaption><pre><code>git<span class="hl-w"> </span>branch<span class="hl-w"> </span>-m<span class="hl-w"> </span>ancien-nom<span class="hl-w"> </span>fin-jour-1
+git<span class="hl-w"> </span>push<span class="hl-w"> </span>-u<span class="hl-w"> </span>origin<span class="hl-w"> </span>fin-jour-1
+git<span class="hl-w"> </span>push<span class="hl-w"> </span>origin<span class="hl-w"> </span>--delete<span class="hl-w"> </span>ancien-nom
+</code></pre><textarea hidden id="c8_38">git branch -m ancien-nom fin-jour-1
+git push -u origin fin-jour-1
+git push origin --delete ancien-nom</textarea></figure>
+<p><strong>Lister les branches et les étiquettes</strong> : <code>git branch -a</code> (branches locales et distantes), <code>git tag</code> (étiquettes).</p><p class="retour-plan"><a href="#plan">↑ Plan de la journée</a></p></div>
 </main><script>
 document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
   const t = document.getElementById('c' + b.dataset.i).value
