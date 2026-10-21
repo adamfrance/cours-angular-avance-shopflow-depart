@@ -1,0 +1,11 @@
+<section class="panneau">
+  <h2>Dernières commandes</h2>
+  @if (miseAJour$ | async; as date) {
+    <p class="info">Actualisé à {{ date | date: 'HH:mm:ss' }}</p>
+  }
+  <ul class="liste-simple">
+    @for (c of commandes$ | async; track c.id) {
+      <li>Commande n° {{ c.id }} : {{ c.totalQuantity }} article(s), {{ c.discountedTotal | currency: 'EUR' }}</li>
+    }
+  </ul>
+</section>

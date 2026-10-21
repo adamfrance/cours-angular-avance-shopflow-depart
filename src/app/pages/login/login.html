@@ -1,0 +1,16 @@
+<h1>Connexion</h1>
+<form class="formulaire" (ngSubmit)="connecter()">
+  <p class="info">Compte de démonstration : emilys / emilyspass</p>
+  <div class="groupe">
+    <label for="identifiant">Identifiant</label>
+    <input id="identifiant" class="champ" name="identifiant" autocomplete="username" [(ngModel)]="identifiant" />
+  </div>
+  <div class="groupe">
+    <label for="motDePasse">Mot de passe</label>
+    <input id="motDePasse" class="champ" type="password" name="motDePasse" autocomplete="current-password" [(ngModel)]="motDePasse" />
+  </div>
+  @if (erreur$ | async; as erreur) {
+    <p class="alerte">{{ erreur }}</p>
+  }
+  <button class="bouton" type="submit">Se connecter</button>
+</form>

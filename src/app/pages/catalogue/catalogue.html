@@ -1,0 +1,27 @@
+<h1>Catalogue</h1>
+@if (vue$ | async; as vue) {
+  <p class="sous-titre">{{ vue.total }} produits</p>
+  <div class="barre-outils">
+    <input class="champ recherche" type="search" placeholder="Rechercher un produit…" (input)="onRecherche($event)" />
+    <select class="champ" (change)="onCategorie($event)">
+      <option value="">Toutes les catégories</option>
+      @for (c of categories$ | async; track c.slug) {
+        <option [value]="c.slug">{{ c.name }}</option>
+      }
+    </select>
+    <select class="champ" (change)="onTri($event)">
+      <option value="nom">Trier par nom</option>
+      <option value="prix-croissant">Prix croissant</option>
+      <option value="prix-decroissant">Prix décroissant</option>
+    </select>
+  </div>
+  <div class="grille">
+    @for (p of vue.produits; track p.id) {
+      <sf-product-card [product]="p" (ajout)="panier.add($event)" [prioritaire]="$index < 4" />
+    } @empty {
+      <p class="info">Aucun produit ne correspond à votre recherche.</p>
+    }
+  </div>
+} @else {
+  <p class="info">Chargement du catalogue…</p>
+}

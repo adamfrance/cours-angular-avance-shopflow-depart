@@ -1,0 +1,21 @@
+<h1>Mes commandes</h1>
+@if (etat$ | async; as etat) {
+  @if (etat.chargement) {
+    <p class="info">Chargement de vos commandes…</p>
+  } @else if (etat.erreur) {
+    <p class="alerte">{{ etat.erreur }}</p>
+  } @else {
+    <p class="sous-titre">{{ etat.utilisateur?.firstName }} {{ etat.utilisateur?.lastName }} : {{ etat.commandes.length }} commande(s), {{ etat.totalDepense | currency: 'EUR' }} au total</p>
+    @for (c of etat.commandes; track c.id) {
+      <section class="panneau">
+        <h2>Commande n° {{ c.id }}</h2>
+        <p>{{ c.totalQuantity }} article(s), {{ c.discountedTotal | currency: 'EUR' }}</p>
+        <ul class="liste-simple">
+          @for (p of c.products; track p.id) {
+            <li>{{ p.quantity }} × {{ p.title }}</li>
+          }
+        </ul>
+      </section>
+    }
+  }
+}

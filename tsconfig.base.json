@@ -1,0 +1,15 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "skipLibCheck": true,
+    "paths": {
+      "@shopflow/data-access": ["./libs/shared/data-access/src/index.ts"],
+      "@shopflow/ui": ["./libs/shared/ui/src/index.ts"],
+      "@shopflow/models": ["./libs/shared/models/src/index.ts"]
+    }
+  }
+}

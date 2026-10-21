@@ -1,0 +1,11 @@
+@if (page$ | async; as page) {
+  <div class="tuiles">
+    <div class="tuile"><span class="tuile-valeur">{{ page.total }}</span><span class="tuile-libelle">produits</span></div>
+    <div class="tuile"><span class="tuile-valeur">{{ valeurStock(page.products) | currency: 'EUR' : 'symbol' : '1.0-0' }}</span><span class="tuile-libelle">valeur du stock</span></div>
+    <div class="tuile"><span class="tuile-valeur">{{ nbStockFaible(page.products) }}</span><span class="tuile-libelle">en stock faible</span></div>
+    <div class="tuile"><span class="tuile-valeur">{{ nbRuptures(page.products) }}</span><span class="tuile-libelle">en rupture</span></div>
+  </div>
+} @else {
+  <p class="info">Chargement des indicateurs…</p>
+}
+<app-live-orders />
